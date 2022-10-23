@@ -1,0 +1,113 @@
+---
+openapi: 3.0.1
+info:
+  title: Projects V1
+  version: v1
+paths:
+  "/projects":
+    post:
+      summary: Employee can Creates a Project
+      tags:
+      - Project
+      parameters: []
+      responses:
+        '201':
+          description: Project created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                owner_id:
+                  type: integer
+                state:
+                  type: string
+                  enum:
+                  - active
+                  - planning
+                  - done
+                  - failed
+              required:
+              - name
+              - owner_id
+              - state
+    get:
+      summary: Employee can Retrieves all projects
+      tags:
+      - Project
+      responses:
+        '200':
+          description: Project
+  "/projects/{id}":
+    put:
+      summary: Employee can UPDATES a `Project`
+      tags:
+      - Project
+      parameters:
+      - name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: Project updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                owner_id:
+                  type: integer
+                state:
+                  type: string
+                  enum:
+                  - active
+                  - planning
+                  - done
+                  - failed
+              required:
+              - name
+              - owner_id
+              - state
+    get:
+      summary: Employee can Show a Project
+      tags:
+      - Project
+      parameters:
+      - name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: project found
+    delete:
+      summary: Employee can Delete a Project
+      tags:
+      - Project
+      parameters:
+      - name: id
+        in: path
+        required: true
+      responses:
+        '204':
+          description: project found
+  "/projects/{id}/assign_participant":
+    put:
+      summary: Employee can Show a Project
+      tags:
+      - Project
+      parameters:
+      - name: id
+        in: path
+        required: true
+      - name: participant_id
+        in: query
+        required: true
+      responses:
+        '200':
+          description: project found

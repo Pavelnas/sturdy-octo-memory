@@ -35,7 +35,7 @@ paths:
               - owner_id
               - state
     get:
-      summary: Employee can Retrieves all projects for admin
+      summary: Employee can Retrieves all projects
       tags:
       - Project
       responses:
@@ -95,4 +95,19 @@ paths:
         required: true
       responses:
         '204':
+          description: project found
+  "/projects/{id}/assign_participant":
+    put:
+      summary: Employee can Show a Project
+      tags:
+      - Project
+      parameters:
+      - name: id
+        in: path
+        required: true
+      - name: participant_id
+        in: query
+        required: true
+      responses:
+        '200':
           description: project found

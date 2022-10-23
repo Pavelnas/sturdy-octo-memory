@@ -1,3 +1,4 @@
+require 'employees_api'
 class Project < ApplicationRecord
   has_many :project_participants
 
@@ -11,7 +12,7 @@ class Project < ApplicationRecord
   }
 
   def owner_to_be_manager
-    employee = EmployeeApi.new.get_employee(owner_id)
+    employee = ::EmployeesApi.new.get_employee(owner_id)
     errors.add(:owner_id, 'must be a manager') unless employee.role == 'manager'
   end
 end

@@ -5,6 +5,6 @@ class Projects::Create
   def call
     context.project = Project.new(project_params)
 
-    fail!(error: project.errors) unless context.project.save
+    fail!(error: context.project.errors) unless context.project.save
   end
 end

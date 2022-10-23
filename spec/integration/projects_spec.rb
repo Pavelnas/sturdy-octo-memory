@@ -75,6 +75,21 @@ describe 'Project API' do
     end
   end
 
+  path '/projects/{id}/assign_participant' do
+    put 'Employee can Show a Project' do
+      tags 'Project'
+      produces 'application/json'
+      parameter name: :id, in: :path
+      parameter name: :participant_id, in: :query, required: true
+
+      let(:project) { create(:project) }
+      response '200', 'project found' do
+        let(:id) { project.id }
+        run_test!
+      end
+    end
+  end
+
   path '/projects/{id}' do
     delete 'Employee can Delete a Project' do
       tags 'Project'

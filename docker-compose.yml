@@ -6,7 +6,7 @@ services:
       context: .
     volumes:
       - .:/app
-    command: /bin/run.sh
+    command: /bin/start.sh
     ports:
       - 3000:3000
     env_file:
